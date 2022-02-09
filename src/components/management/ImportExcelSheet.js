@@ -115,7 +115,7 @@ const ImportExcelSheet = () => {
               validationSchema={validate}
               onSubmit={async (values, { setSubmitting }) => {
                 try {
-                  const res = await axios.post("http://localhost:8080/api/v1/nurses/savenurses", { data: values });
+                  const res = await axios.post("https://nurses-server.herokuapp.com/api/v1/nurses/savenurses", { data: values });
                   console.log(res)
                   if (res.status === 200) {
                     setSubmitting(false);
