@@ -1,0 +1,51 @@
+import React, { useState, useContext } from 'react';
+import Main from "./components/main/Main";
+
+import CounselorReq from "./components/pendings/CounselorReq";
+import SendMessage from "./components/management/SendMessage";
+import ImportExcelSheet from "./components/management/ImportExcelSheet";
+import Navbar from './components/navbar/Navbar';
+import Sidebar from "./components/sidebar/Sidebar";
+import Login from "./components/profile/Login";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+
+
+const App = () => {
+  const [sidebarOpen, setsidebarOpen] = useState(false);
+  const { user } = useContext(AuthContext);
+
+  const openSidebar = () => {
+    setsidebarOpen(true);
+  };
+  const closeSidebar = () => {
+    setsidebarOpen(false);
+  };
+  return (
+    <div className="container">
+      <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            {user ? <Redirect to='/dashboard' /> : < Login />}
+          </Route>
+          <Route exact path="/dashboard">
+            {user ? <Main /> : <Login />}
+          </Route>
+          <Route exact path="/importexcelsheet">
+            {user ? <ImportExcelSheet /> : <Login />}
+          </Route>
+          <Route exact path="/sendmessages">
+            {user ? <SendMessage /> : <Login />}
+          </Route>
+
+
+        </Switch>
+      </Router>
+      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
+    </div>
+  );
+};
+
+export default App;
