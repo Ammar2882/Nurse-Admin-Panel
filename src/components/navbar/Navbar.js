@@ -32,6 +32,12 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
         >
           Send Message
         </a>
+        <a
+          className={splitLocation[1] === "existingmembers" ? "active_link" : ""}
+          href="/existingmembers"
+        >
+          Existing Members
+        </a>
       </div>
       <div className="navbar__right">
         <a href="#">

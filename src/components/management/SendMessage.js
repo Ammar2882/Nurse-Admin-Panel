@@ -1,25 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './SendMessage.css'
 import axios from 'axios'
+import loading from '../../assets/loading.gif'
 
 const SendMessage = () => {
-  const [members, setMembers] = useState([])
-  useEffect(() => {
-    try {
-      const data = axios.get()
-    }
-    catch (e) {
-      console.log(e)
-    }
-  }, [])
-  return (
-    <div>
-      <div className="message-main">
-        Send Messages
-      </div>
+  const [message, setMessage] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
+  const handleSubmit = async () => {
+    try {
+      setSubmitting(true)
+      const res = await axios.post("http://localhost:8080/api/v1/nurses/sendmessages", { data: message });
+      console.log(res)
+      if (res.status === 200) {
+        setSubmitting(false);
+        return alert(res.data.data)
+      }
+      setSubmitting(false);
+      return alert("fail")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  return (
+    <div className="message-main">
+      {!submitting ?
+        <div>
+          <div className="main-form">
+            <p>Enter Message</p>
+            <div>
+              <textarea className="text-area" onChange={(e) => setMessage(e.target.value)}
+                rows="5" cols="60" name="description">
+
+              </textarea>
+            </div>
+            <button onClick={handleSubmit}>SEND</button>
+          </div>
+        </div>
+        :
+        <div className="spinner">
+          <img src={loading} alt="loading" />
+        </div>
+      }
     </div>
   )
+
 };
 
 export default SendMessage;

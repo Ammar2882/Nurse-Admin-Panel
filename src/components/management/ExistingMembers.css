@@ -1,0 +1,14 @@
+.members-main{
+    width: calc(100vw - 280px);
+    margin-top: 10px;
+}
+
+.members-second{
+    width: 98%;
+    margin: 0 auto;
+    overflow-x: scroll;
+}
+
+.table-headers{
+    padding: 0 20px;
+}

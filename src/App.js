@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import Main from "./components/main/Main";
 
-import CounselorReq from "./components/pendings/CounselorReq";
+
 import SendMessage from "./components/management/SendMessage";
 import ImportExcelSheet from "./components/management/ImportExcelSheet";
+import ExistingMembers from './components/management/ExistingMembers';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from "./components/sidebar/Sidebar";
 import Login from "./components/profile/Login";
@@ -38,6 +39,9 @@ const App = () => {
           </Route>
           <Route exact path="/sendmessages">
             {user ? <SendMessage /> : <Login />}
+          </Route>
+          <Route exact path="/existingmembers">
+            {user ? <ExistingMembers /> : <Login />}
           </Route>
 
 
