@@ -12,3 +12,13 @@
 .table-headers{
     padding: 0 20px;
 }
+
+@media screen and (max-width:978px) {
+    .members-main{
+        width: 100vw;
+    }
+    
+.members-second{
+    width: 98%;
+}
+}
