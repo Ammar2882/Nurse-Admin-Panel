@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './SendMessage.css'
 import axios from 'axios'
 import loading from '../../assets/loading.gif'
+import { baseUrl } from "../constants/BaseUrl";
 
 const SendMessage = () => {
   const [message, setMessage] = useState('')
@@ -10,7 +11,7 @@ const SendMessage = () => {
   const handleSubmit = async () => {
     try {
       setSubmitting(true)
-      const res = await axios.post("https://nurses-server.herokuapp.com/api/v1/nurses/sendmessages", { data: message });
+      const res = await axios.post(`${baseUrl}/api/v1/nurses/sendmessages`, { data: message });
       console.log(res)
       if (res.status === 200) {
         setSubmitting(false);

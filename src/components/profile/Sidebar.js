@@ -5,7 +5,7 @@ import Input from "./Input";
 import logo from "../../assets/logo_transparent.png";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-
+import { baseUrl } from "../constants/BaseUrl";
 const Sidebar = (props) => {
   const [email, setEmail] = useState("");
   const history = useHistory()
@@ -16,7 +16,7 @@ const Sidebar = (props) => {
   const adminLogin = async () => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("https://nurses-server.herokuapp.com/api/v1/admin/login", { email: email, password: password });
+      const res = await axios.post(`${baseUrl}/api/v1/admin/login`, { email: email, password: password });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.token });
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err });
@@ -26,7 +26,7 @@ const Sidebar = (props) => {
   const adminSignup = async () => {
     console.log('signup called')
     try {
-      const signup = axios.post('https://nurses-server.herokuapp.com/api/v1/admin/signup', { email, password })
+      const signup = axios.post(`${baseUrl}/api/v1/admin/signup`, { email, password })
       const res = signup.json()
       if (res.success) {
         alert('signup successfull')

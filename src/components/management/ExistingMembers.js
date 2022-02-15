@@ -5,6 +5,7 @@ import axios from 'axios'
 import { CSVLink } from 'react-csv'
 import loadingIcon from '../../assets/loading.gif'
 import Pagination from '../utils/Pagination'
+import { baseUrl } from '../constants/BaseUrl'
 
 const headers = [
   { label: "Serial Number", key: "serialNumber" },
@@ -45,7 +46,7 @@ const ExistingMembers = () => {
   }, [])
   const getMembers = async () => {
     try {
-      const res = await axios.get("https://nurses-server.herokuapp.com/api/v1/nurses/getnurses");
+      const res = await axios.get(`${baseUrl}/api/v1/nurses/getnurses`);
       console.log(res)
       if (res.status === 200) {
         setCsvReport({
@@ -117,11 +118,7 @@ const ExistingMembers = () => {
                   <td>{item.numberOfPatients}</td>
                   <td>{item.prefGender}</td>
                   <td>{item.prefRegion}</td>
-                  <td>
-                    {item.immobility.map((immo, key) => (
-                      <span>{immo}</span>
-                    ))}
-                  </td>
+                  <td>{item.immobility.join()}</td>
 
                 </tr>
               ))}

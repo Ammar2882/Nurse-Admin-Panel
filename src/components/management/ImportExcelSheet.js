@@ -7,6 +7,7 @@ import { BiImport } from "react-icons/bi";
 import './ImportExcelSheet.css'
 import axios from "axios";
 import "../adminStyles/AdminStyles.css";
+import { baseUrl } from "../constants/BaseUrl";
 const EXTENSIONS = ['xlsx', 'xls', 'csv']
 
 
@@ -116,11 +117,12 @@ const ImportExcelSheet = () => {
               validationSchema={validate}
               onSubmit={async (values, { setSubmitting }) => {
                 try {
-                  const res = await axios.post("https://nurses-server.herokuapp.com/api/v1/nurses/savenurses", { data: values });
+                  const res = await axios.post(`${baseUrl}/api/v1/nurses/savenurses`, { data: values });
                   console.log(res)
                   if (res.status === 200) {
                     setSubmitting(false);
-                    return alert(res.data.data)
+                    alert(res.data.data)
+                    return setLoading(false)
                   }
                   return alert("fail")
                 } catch (error) {
