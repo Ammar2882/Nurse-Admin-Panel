@@ -53,7 +53,7 @@ const ExistingMembers = () => {
         let reportData = res.data.data.map((item, index) => {
           return {
             serialNumber: item.serialNumber,
-            profilePhoto: `http://localhost:8080${item.profilePhoto}`,
+            profilePhoto: `${baseUrl}${item.profilePhoto}`,
             name: item.name,
             age: item.age,
             sex: item.sex,
@@ -129,7 +129,7 @@ const ExistingMembers = () => {
               {currentPosts.map((item, index) => (
                 <tr key={index}>
                   <td>{item.serialNumber}</td>
-                  <td><img style={{ width: '75px', height: '75px', borderRadius: '50%' }} src={`http://localhost:8080${item.profilePhoto}`} alt='profile-pic' /></td>
+                  <td><img style={{ width: '75px', height: '75px', borderRadius: '50%' }} src={`${baseUrl}${item.profilePhoto}`} alt='profile-pic' /></td>
                   <td>{item.name}</td>
                   <td>{item.age}</td>
                   <td>{item.sex}</td>
