@@ -25,8 +25,9 @@ const App = () => {
   };
   return (
     <div className="container">
-      <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
+
       <Router>
+        <Navbar sidebarOpen={sidebarOpen} openSidebar={openSidebar} />
         <Switch>
           <Route exact path="/">
             {user ? <Redirect to='/dashboard' /> : < Login />}
@@ -46,8 +47,9 @@ const App = () => {
 
 
         </Switch>
+        <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
       </Router>
-      <Sidebar sidebarOpen={sidebarOpen} closeSidebar={closeSidebar} />
+
     </div>
   );
 };

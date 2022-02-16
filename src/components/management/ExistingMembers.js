@@ -6,9 +6,11 @@ import { CSVLink } from 'react-csv'
 import loadingIcon from '../../assets/loading.gif'
 import Pagination from '../utils/Pagination'
 import { baseUrl } from '../constants/BaseUrl'
+import dateFormat from "dateformat";
 
 const headers = [
   { label: "Serial Number", key: "serialNumber" },
+  { label: "Profile Photo", key: "profilePhoto" },
   { label: "Name", key: "name" },
   { label: "Age", key: "age" },
   { label: "Sex", key: "sex" },
@@ -23,8 +25,8 @@ const headers = [
   { label: "Expected Salary", key: "expectedSalary" },
   { label: "Night Shift", key: "nightShift" },
   { label: "Number of Patients", key: "numberOfPatients" },
-  { label: "Preferred Gender", key: "preferredGender" },
-  { label: "Preferred Region", key: "preferredRegion" },
+  { label: "Preferred Gender", key: "prefGender" },
+  { label: "Preferred Region", key: "prefRegion" },
   { label: "Immobility", key: "immobility" },
   { label: "Availability", key: "availability" }
 ]
@@ -47,11 +49,36 @@ const ExistingMembers = () => {
   const getMembers = async () => {
     try {
       const res = await axios.get(`${baseUrl}/api/v1/nurses/getnurses`);
-      console.log(res)
       if (res.status === 200) {
+        let reportData = res.data.data.map((item, index) => {
+          return {
+            serialNumber: item.serialNumber,
+            profilePhoto: `http://localhost:8080${item.profilePhoto}`,
+            name: item.name,
+            age: item.age,
+            sex: item.sex,
+            driveLic: item.driveLic,
+            smoking: item.smoking,
+            phoneNumber: item.phoneNumber,
+            availability: dateFormat(item.availability, "fullDate"),
+            area: item.area,
+            addiMembers: item.addiMembers,
+            demPatients: item.demPatients,
+            incontinence: item.incontinence,
+            german: item.german,
+            expectedSalary: item.expectedSalary,
+            nightShift: item.nightShift,
+            numberOfPatients: item.numberOfPatients,
+            prefGender: item.prefGender,
+            prefRegion: item.prefRegion,
+            immobility: item.immobility.join()
+
+          }
+        })
+
         setCsvReport({
           filename: 'Report.csv',
-          data: res.data.data,
+          data: reportData,
           headers: headers
         })
         setMembers(res.data.data)
@@ -77,6 +104,7 @@ const ExistingMembers = () => {
             <thead className="thead-dark">
               <tr className='table-headers-main'>
                 <th className='table-headers' scope="column">Serial Number</th>
+                <th className='table-headers' scope="column">Image</th>
                 <th className='table-headers' scope="column">Name</th>
                 <th className='table-headers' scope="column">Age</th>
                 <th className='table-headers' scope="column">Sex</th>
@@ -101,13 +129,14 @@ const ExistingMembers = () => {
               {currentPosts.map((item, index) => (
                 <tr key={index}>
                   <td>{item.serialNumber}</td>
+                  <td><img style={{ width: '75px', height: '75px', borderRadius: '50%' }} src={`http://localhost:8080${item.profilePhoto}`} alt='profile-pic' /></td>
                   <td>{item.name}</td>
                   <td>{item.age}</td>
                   <td>{item.sex}</td>
                   <td>{item.driveLic}</td>
                   <td>{item.smoking}</td>
                   <td>{item.phoneNumber}</td>
-                  <td>{item.availability}</td>
+                  <td>{dateFormat(item.availability, "fullDate")}</td>
                   <td>{item.area}</td>
                   <td>{item.addiMembers}</td>
                   <td>{item.demPatients}</td>

@@ -1,5 +1,6 @@
 import "./Sidebar.css";
 import logo from "../../assets/logo.png";
+import { Link } from 'react-router-dom'
 
 const Sidebar = ({ sidebarOpen, closeSidebar }) => {
   return (
@@ -20,26 +21,26 @@ const Sidebar = ({ sidebarOpen, closeSidebar }) => {
       <div className="sidebar__menu">
         <div className="sidebar__link active_menu_link">
           <i className="fa fa-home"></i>
-          <a href="/dashboard">Dashboard</a>
+          <Link to="/dashboard">Dashboard</Link>
         </div>
         <h2>OPTIONS</h2>
         <div className="sidebar__link">
           <i className="fa fa-user-secret" aria-hidden="true"></i>
-          <a href="/importexcelsheet">Import Excel Sheet</a>
+          <Link to="/importexcelsheet">Import Excel Sheet</Link>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-user-o"></i>
-          <a href="/sendmessages">Send Message</a>
+          <Link to="/sendmessages">Send Message</Link>
         </div>
         <div className="sidebar__link">
           <i className="fa fa-user-secret" aria-hidden="true"></i>
-          <a href="/existingmembers">Existing Members</a>
+          <Link to="/existingmembers">Existing Members</Link>
         </div>
         <div className="sidebar__logout">
           <i className="fa fa-power-off"></i>
-          <a onClick={() => localStorage.removeItem("user")} href="/">
+          <Link onClick={() => localStorage.removeItem("user")} to="/">
             Log out
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -14,38 +14,38 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
         <i className="fa fa-bars" aria-hidden="true"></i>
       </div>
       <div className="navbar__left">
-        <a
+        <Link
           className={splitLocation[1] === "dashboard" ? "active_link" : ""}
-          href="/dashboard"
+          to="/dashboard"
         >
           Dashboard
-        </a>
-        <a
+        </Link>
+        <Link
           className={splitLocation[1] === "importexcelsheet" ? "active_link" : ""}
-          href="/importexcelsheet"
+          to="/importexcelsheet"
         >
           Import Excel Sheet
-        </a>
-        <a
+        </Link>
+        <Link
           className={splitLocation[1] === "sendmessages" ? "active_link" : ""}
-          href="/sendmessages"
+          to="/sendmessages"
         >
           Send Message
-        </a>
-        <a
+        </Link>
+        <Link
           className={splitLocation[1] === "existingmembers" ? "active_link" : ""}
-          href="/existingmembers"
+          to="/existingmembers"
         >
           Existing Members
-        </a>
+        </Link>
       </div>
-      <div className="navbar__right">
-        <a href="#">
+      <div clLinkssName="navbar__right">
+        {/* <Link to="#">
           <i className="fa fa-search" aria-hidden="true"></i>
-        </a>
-        <a href="#!">
+        </Link> */}
+        <Link to="#!">
           <img width="30" src={avatar} alt="avatar" />
-        </a>
+        </Link>
       </div>
     </nav>
   );
