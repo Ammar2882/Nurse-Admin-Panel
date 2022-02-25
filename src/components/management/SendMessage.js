@@ -23,6 +23,23 @@ const SendMessage = () => {
       console.log(error)
     }
   }
+
+  const handleSubmitToLatestFile = async () => {
+    try {
+      setSubmitting(true)
+      const res = await axios.post(`${baseUrl}/api/v1/nurses/sendmessages/latest`, { data: message });
+      console.log(res)
+      if (res.status === 200) {
+        setSubmitting(false);
+        return alert(res.data.data)
+      }
+      setSubmitting(false);
+      return alert("fail")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="message-main">
       {!submitting ?
@@ -35,7 +52,10 @@ const SendMessage = () => {
 
               </textarea>
             </div>
-            <button onClick={handleSubmit}>SEND</button>
+            <div className="button-div">
+              <button className="button" onClick={handleSubmit}>SEND TO All MEMBERS</button>
+              <button className="button" onClick={handleSubmitToLatestFile}>SEND TO LATEST IMPORTED FILE</button>
+            </div>
           </div>
         </div>
         :

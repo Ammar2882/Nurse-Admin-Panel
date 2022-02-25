@@ -39,16 +39,21 @@
     font-size: 20px;
     font-weight: 400;
 }
-.main-form button{
+.button-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.button{
     margin-right: 20px;
     cursor: pointer;
-     margin-top: 10;
-      background-color: rgb(62, 62, 221);
-       padding: 4px;
-        border-radius: 4px;
-         width: 100px;
-         height: 30px;
-         color: white; 
+    margin-top: 10;
+    background-color: #1C1E26;
+    padding: 4px;
+    border-radius: 4px;
+    width: 200px;
+    height: 40px;
+    color: white; 
 }
 .spinner{
     display: flex;
