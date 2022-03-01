@@ -13,83 +13,26 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
       </div>
       <div className="navbar__left">
         <NavLink
-          style={({ isActive }) =>
-            isActive
-              ? {
-
-                borderBottom: '3px solid black',
-                paddingBottom: '15px',
-              }
-              : {
-                marginRight: '30px',
-                textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: '700',
-
-              }
-          }
+          activeClassName="active__link"
           to="/dashboard"
         >
           Dashboard
         </NavLink>
         <NavLink
-          style={({ isActive }) =>
-            isActive
-              ? {
-                borderBottom: '3px solid black',
-                paddingBottom: '15px',
-
-              }
-              : {
-                marginRight: '30px',
-                textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: '700',
-
-
-              }
-          }
-
+          activeClassName="active__link"
           to="/importexcelsheet"
         >
           Import Excel Sheet
         </NavLink>
         <NavLink
-          style={({ isActive }) =>
-            isActive
-              ? {
-                borderBottom: '3px solid black',
-                paddingBottom: '15px',
-
-              }
-              : {
-                marginRight: '30px',
-                textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: '700',
-
-
-              }
-          }
+          activeClassName="active__link"
           to="/sendmessages"
         >
           Send Message
         </NavLink>
         <NavLink
           to="existingmembers"
-          style={({ isActive }) =>
-            isActive
-              ? {
-                borderBottom: '3px solid black',
-                paddingBottom: '15px',
-              }
-              : {
-                marginRight: '30px',
-                textDecoration: 'none',
-                fontSize: '15px',
-                fontWeight: '700',
-              }
-          }
+          activeClassName="active__link"
 
         >
           Existing Members
