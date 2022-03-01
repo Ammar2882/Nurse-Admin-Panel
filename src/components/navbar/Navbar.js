@@ -1,12 +1,10 @@
 import "./Navbar.css";
 import avatar from "../../assets/avatar.svg";
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = ({ sidebarOpen, openSidebar }) => {
-  const path = window.location.pathname;
-  console.log(path);
-  const splitLocation = path.split("/");
-  console.log(splitLocation);
+
+
 
   return (
     <nav className="navbar">
@@ -14,32 +12,90 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
         <i className="fa fa-bars" aria-hidden="true"></i>
       </div>
       <div className="navbar__left">
-        <Link
-          className={splitLocation[1] === "dashboard" ? "active_link" : ""}
+        <NavLink
+          style={({ isActive }) =>
+            isActive
+              ? {
+
+                borderBottom: '3px solid black',
+                paddingBottom: '15px',
+              }
+              : {
+                marginRight: '30px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '700',
+
+              }
+          }
           to="/dashboard"
         >
           Dashboard
-        </Link>
-        <Link
-          className={splitLocation[1] === "importexcelsheet" ? "active_link" : ""}
+        </NavLink>
+        <NavLink
+          style={({ isActive }) =>
+            isActive
+              ? {
+                borderBottom: '3px solid black',
+                paddingBottom: '15px',
+
+              }
+              : {
+                marginRight: '30px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '700',
+
+
+              }
+          }
+
           to="/importexcelsheet"
         >
           Import Excel Sheet
-        </Link>
-        <Link
-          className={splitLocation[1] === "sendmessages" ? "active_link" : ""}
+        </NavLink>
+        <NavLink
+          style={({ isActive }) =>
+            isActive
+              ? {
+                borderBottom: '3px solid black',
+                paddingBottom: '15px',
+
+              }
+              : {
+                marginRight: '30px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '700',
+
+
+              }
+          }
           to="/sendmessages"
         >
           Send Message
-        </Link>
-        <Link
-          className={splitLocation[1] === "existingmembers" ? "active_link" : ""}
-          to="/existingmembers"
+        </NavLink>
+        <NavLink
+          to="existingmembers"
+          style={({ isActive }) =>
+            isActive
+              ? {
+                borderBottom: '3px solid black',
+                paddingBottom: '15px',
+              }
+              : {
+                marginRight: '30px',
+                textDecoration: 'none',
+                fontSize: '15px',
+                fontWeight: '700',
+              }
+          }
+
         >
           Existing Members
-        </Link>
+        </NavLink>
       </div>
-      <div clLinkssName="navbar__right">
+      <div className="navbar__right">
         {/* <Link to="#">
           <i className="fa fa-search" aria-hidden="true"></i>
         </Link> */}
@@ -47,7 +103,7 @@ const Navbar = ({ sidebarOpen, openSidebar }) => {
           <img width="30" src={avatar} alt="avatar" />
         </Link>
       </div>
-    </nav>
+    </nav >
   );
 };
 

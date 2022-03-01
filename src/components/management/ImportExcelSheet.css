@@ -1,7 +1,7 @@
 .form-main{
-    width: calc(100vw - 315px);
-    margin: 0 auto;
-    padding-bottom: 10px;
+background: #f3f4f6;
+  grid-area: main;
+  overflow-y: auto;
 
 }
 .main-wrapper{
@@ -46,7 +46,7 @@
 }
 .inner-icon{
     padding-top:18%;
-    width: calc(100vw - 280px);
+    width: calc(100vw - 325px);
 }
 .import-icon{
     cursor: pointer;

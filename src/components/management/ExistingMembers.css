@@ -1,6 +1,7 @@
 .members-main{
-    width: calc(100vw - 315px);
-    margin-top: 10px;
+    background: #f3f4f6;
+  grid-area: main;
+  overflow-y: auto;
 }
 
 .members-second{

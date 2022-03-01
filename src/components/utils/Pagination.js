@@ -18,7 +18,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     }
     const toggleActiveStyle = (index) => {
         if (appState.objects[index] === appState.activeObject) {
-            return "btn active"
+            return "btn active-pagination"
         }
         else {
             return "btn"

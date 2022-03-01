@@ -99,8 +99,8 @@ const ImportExcelSheet = () => {
   if (loading) {
     return (
       <>
-        <div>
-          <div className="form-main">
+        <div className="form-main">
+          <div style={{ width: '98%' }}>
             <Formik
               initialValues={{
                 serialNumbers: data.map((item) => item[0] || ''),
@@ -370,15 +370,18 @@ const ImportExcelSheet = () => {
   }
   else {
     return (
-      <div className="icon-main">
-        <div className="inner-icon">
-          <div style={{ textAlign: 'center' }}>
-            <label for="fileUpload"><BiImport className='import-icon' /></label>
-            <input id="fileUpload" type="file" onChange={importExcel} style={{ display: 'none' }} />
-            <h2>Upload Excel Sheet</h2>
+      <div className="form-main">
+        <div className="icon-main">
+          <div className="inner-icon">
+            <div style={{ textAlign: 'center' }}>
+              <label for="fileUpload"><BiImport className='import-icon' /></label>
+              <input id="fileUpload" type="file" onChange={importExcel} style={{ display: 'none' }} />
+              <h2>Upload Excel Sheet</h2>
+            </div>
           </div>
         </div>
       </div>
+
     )
 
   }
