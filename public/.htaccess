@@ -1,5 +1,4 @@
+# Redirect traffic to your port 3000
 RewriteEngine On
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
-RewriteRule ^ - [L]
-RewriteRule ^ ./index.html
+RewriteBase /
+RewriteRule ^(.*)?$ http://127.0.0.1:3000/$1 [P,L]
